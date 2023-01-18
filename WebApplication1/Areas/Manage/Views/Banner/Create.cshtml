@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Banner - Create";
+}
+@model CreateBannerVM
+<div class="container">
+    <div class="card p-4">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="PrimaryTitle"></label>
+                <input asp-for="PrimaryTitle" class="form-control">
+                <span asp-validation-for="PrimaryTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondaryTitle"></label>
+                <input asp-for="SecondaryTitle" class="form-control">
+                <span asp-validation-for="SecondaryTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image"></label>
+                <input asp-for="Image" accept="image/*" class="form-control">
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order"></label>
+                <input asp-for="Order" class="form-control">
+                <span asp-validation-for="Order" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary me-2">Submit</button>
+        </form>
+    </div>
+</div>

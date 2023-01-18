@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model IEnumerable<Product>
+<div class="container">
+    <a class="btn btn-primary my-3" asp-action="Create">Create</a>
+    <table class="table table-bordered table-responsive">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>SKU</th>
+                <th>CostPrice</th>
+                <th>SellPrice</th>
+                <th>Discount</th>
+                <th>Status</th>
+                <th>Colors</th>
+                <th>Sizes</th>
+                <th>Cover Images</th>
+                <th colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.SKU</td>
+                    <td>@item.CostPrice</td>
+                    <td>@item.SellPrice</td>
+                    <td>@item.Discount</td>
+                    <td>@item.IsDeleted</td>
+                    <td>
+                        @foreach (var color in item?.ProductColors.Where(pc => pc.ProductId == item.Id))
+                        {
+                            <span>@color.Color.Name</span>
+                        }
+                    </td>
+                    <td>
+                        @foreach (var size in item?.ProductSizes.Where(ps => ps.ProductId == item.Id))
+                        {
+                            <span>@size.Size.Name.ToUpper()</span>
+                        }
+                    </td>
+                    <td>@item?.ProductImages.FirstOrDefault(pi=>pi.IsCover==true)</td>
+                    <td><a class="btn btn-danger" asp-area="Manage" asp-controller="Product" asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
+                    <td><a class="btn btn-info" asp-area="Manage" asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">Update</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

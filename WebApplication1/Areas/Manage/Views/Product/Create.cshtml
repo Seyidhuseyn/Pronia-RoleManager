@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+
+@model CreateProductVM
+<div class="container">
+    <div class="card p-4">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control">
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostPrice"></label>
+                <input asp-for="CostPrice" class="form-control">
+                <span asp-validation-for="CostPrice" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <label asp-for="SellPrice"></label>
+                <input asp-for="SellPrice" class="form-control">
+                <span asp-validation-for="SellPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Discount"></label>
+                <input asp-for="Discount" class="form-control">
+                <span asp-validation-for="Discount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoverImage"></label>
+                <input asp-for="CoverImage" class="form-control">
+                <span asp-validation-for="CoverImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HoverImage"></label>
+                <input asp-for="HoverImage" class="form-control">
+                <span asp-validation-for="HoverImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtherImages"></label>
+                <input asp-for="OtherImages" class="form-control">
+                <span asp-validation-for="OtherImages" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ColorIds"></label>
+                <select asp-for="ColorIds" asp-items="@ViewBag.Colors"></select>
+                <span asp-validation-for="ColorIds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SizeIds"></label>
+                <select asp-for="SizeIds" asp-items="@ViewBag.Sizes"></select>
+                <span asp-validation-for="SizeIds" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary me-2">Submit</button>
+        </form>
+    </div>
+</div>

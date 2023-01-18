@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Update";
+}
+
+@model UpdateProductVM
+<div class="container">
+    <div class="card p-4">
+        <a asp-action="UpdateImage" asp-route-id="@Model.Id"> Update Image</a>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control">
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostPrice"></label>
+                <input asp-for="CostPrice" class="form-control">
+                <span asp-validation-for="CostPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SellPrice"></label>
+                <input asp-for="SellPrice" class="form-control">
+                <span asp-validation-for="SellPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Discount"></label>
+                <input asp-for="Discount" class="form-control">
+                <span asp-validation-for="Discount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ColorIds"></label>
+                <select asp-for="ColorIds" asp-items="@ViewBag.Colors"></select>
+                <span asp-validation-for="ColorIds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SizeIds"></label>
+                <select asp-for="SizeIds" asp-items="@ViewBag.Sizes"></select>
+                <span asp-validation-for="SizeIds" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary me-2">Submit</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿
+@{ 
+    ViewData["Title"] = "UpdateImage";
+}
+
+
+@model UpdateImageVM
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="CoverImage"></label>
+        <input asp-for="CoverImage" accept="image/*" class="form-control">
+        <span asp-validation-for="CoverImage" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HoverImage"></label>
+        <input asp-for="HoverImage" accept="image/*" class="form-control">
+        <span asp-validation-for="HoverImage" class="text-danger"></span>
+    </div>
+    <div class="form-group container">
+        <div class="row">
+            @foreach (var item in (Model.ProductImages ?? new List<ProductImage>()))
+            {
+                <div class="col-md-4 position-relative">
+                    <a class="position-absolute rem-img" asp-action="DeleteImage" asp-route-id="@item.Id" asp-route-productId="" style="top:0; z-index:2; right:15px; cursor:pointer;">x</a>
+                    <img class="w-100" src="~/assets/images/product/@item.ImageUrl" />
+                </div>
+            }
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="OtherImages"></label>
+        <input asp-for="OtherImages" accept="image/*" class="form-control">
+        <span asp-validation-for="OtherImages" class="text-danger"></span>
+    </div>
+    <button class="btn btn-success" type="submit">Submit</button>
+</form>
+
+@section scripts{
+    <script>
+        $(".rem-img").click(function (e) {
+            e.preventDefault();
+            let div = $(this).parent();
+            fetch($(this).attr("href")).then(res => {
+                if (res.status == 200) {
+                    div.remove();
+                }
+             }).catch(err => console.log(err))
+        });
+    </script>
+}
+
